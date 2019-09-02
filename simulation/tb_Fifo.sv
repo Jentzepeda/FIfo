@@ -28,7 +28,7 @@ Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
 
 
 	initial begin
-	$sdf_annotate("../../../syn/sdf/Fifo.sdf",UUT);
+	//$sdf_annotate("../../../syn/sdf/Fifo.sdf",UUT);
 	r_clk	= 1'b0;
 	forever #(CLK2/2) r_clk =~r_clk ;
 	end
@@ -44,7 +44,7 @@ Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
 	end
 
 	initial begin
-	$vcdpluson;
+	//$vcdpluson;
 	n_rst=1'b1;
 	valid_write =1'b0;
 	#10 n_rst=1'b0;
