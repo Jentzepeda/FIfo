@@ -7,29 +7,24 @@
 ** This describes a two stage synchronizer                                  ***
  *******************************************************************************
 */
-module Sync(
-	clk,
-	d_in,
-	d_out
-	);
-
-//parameter
-parameter SIZE = 4;
-
-//input 
-input clk;
-input [(SIZE-1):0] d_in;
-
-//output
-output [(SIZE-1):0] d_out;
+module Sync
+#(
+SIZE=4
+)
+(
+input				clk,
+input	[SIZE-1:0]	d_in,
+output	[SIZE-1:0]	d_out
+);
 
 //reg
 reg [(SIZE-1):0] d_out;
 reg [(SIZE-1):0] temp;
 
 //always block
-	always@(posedge clk ) begin
-		temp	<= d_in;
-		d_out	<= temp;
-	end
+always@(posedge clk ) 
+begin
+	temp	<= d_in;
+	d_out	<= temp;
+end
 endmodule

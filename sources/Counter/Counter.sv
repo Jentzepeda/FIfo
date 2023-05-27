@@ -9,36 +9,31 @@
 *******************************************************************************
 */
 `timescale 1ns/10ps
-module Counter(
-		clk,
-		n_rst,
-		flag,//this should be a negative flag
-		valid,
-		count
-		);
+module Counter
+#(
+SIZE=4
+)
+(
+input					clk,
+input					n_rst,
+input					flag,//this should be a negative flag
+input					valid,
+output reg [SIZE-1:0]	count
+);
 
-//parameter
-	parameter SIZE=4; // make pointer 1 bit longer
-
-//inputs
-	input clk,n_rst;
-	input flag;
-	input valid;
-
-//outputs
-	output reg [SIZE-1:0] count;
-
-//code
-	always@(posedge clk or negedge n_rst)begin
-		if(!n_rst)begin
-			count<=0;
-		end
-		else if(!flag &&valid )begin
-			count<=count+1;
-		end else begin
-			count<=count;
-		end
+always@(posedge clk or negedge n_rst)
+begin
+	if(!n_rst)
+	begin
+		count<=0;
 	end
-
-
+	else if(!flag &&valid )
+	begin
+		count<=count+1;
+	end 
+	else 
+	begin
+		count<=count;
+	end
+end
 endmodule 

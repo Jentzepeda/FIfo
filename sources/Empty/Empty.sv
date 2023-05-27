@@ -9,31 +9,29 @@
 *******************************************************************************
 */
 `timescale 1 ps/1ps
-module Empty(
-	r_pointer,
-	w_pointer,
-	e_flag
-	);
-
-//parameters
-parameter SIZE = 4;
-
-//inputs
-input [SIZE-1:0] r_pointer;
-input [SIZE-1:0] w_pointer;
-
-//outputs
-output e_flag;
+module Empty
+#(
+	SIZE=4
+)
+(
+input	[SIZE-1:0]	r_pointer,
+input	[SIZE-1:0]	w_pointer,
+output				e_flag
+);
 
 //reg 
 reg e_flag;
 
 //always block
-	always_comb begin
-		if(r_pointer==w_pointer)begin
-			e_flag	=1'b1;
-		end else begin
-			e_flag	=1'b0;
-		end
+always_comb 
+begin
+	if(r_pointer==w_pointer)
+	begin
+		e_flag	=1'b1;
+	end 
+	else 
+	begin
+		e_flag	=1'b0;
 	end
+end
 endmodule

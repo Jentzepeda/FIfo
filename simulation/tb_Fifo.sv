@@ -50,7 +50,7 @@ Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
 	#10 n_rst=1'b0;
 	#60 n_rst=1'b1;
 	data_in = 0;
-	#(20*CLK1) data_in= 20;	
+	#(20*CLK1) data_in= 21;	
 	valid_write =1'b1;
 	#(CLK1) data_in= 503;	
 	#(CLK1) data_in= 90;	
@@ -101,7 +101,7 @@ Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
 	#(CLK1) data_in =31;
 	#(CLK1) data_in =32; 
 	#(6*CLK1) valid_write=1'b0;
-	#(19*CLK2) $finish;
+	//#(19*CLK2) $finish;
 	end
 
 endmodule
