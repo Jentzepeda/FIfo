@@ -18,12 +18,25 @@ reg [SIZE-1:0] data_in;
 wire [SIZE-1:0] data_out;
 
 wire f_flag, e_flag;
-wire a_flag;
+wire a_flag, ae_flag;
 
-Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
-	,.n_rst(n_rst),.data_in(data_in),.data_out(data_out)
-		,.valid_write(valid_write),.f_flag(f_flag),
-			.e_flag(e_flag),.almost_full_flag(a_flag));
+Fifo 
+#(
+.SIZE(SIZE),
+.DEPTH(DEPTH))
+ UUT
+ (
+.w_clk(w_clk),
+.r_clk(r_clk),
+.n_rst(n_rst),
+.data_in(data_in),
+.data_out(data_out),
+.valid_write(valid_write),
+.f_flag(f_flag),
+.e_flag(e_flag),
+.almost_empty_flag(ae_flag),
+.almost_full_flag(a_flag)
+);
 
 
 
@@ -39,8 +52,8 @@ Fifo #(.SIZE(SIZE),.DEPTH(DEPTH)) UUT(.w_clk(w_clk),.r_clk(r_clk)
 	end
 
 	initial begin
- $monitor(" data in= %d, data out=%d full =%b, empty =%b, almost =%b rst=%b "
-	,data_in,data_out,f_flag,e_flag,a_flag,n_rst);
+ $monitor(" data in= %d, data out=%d full =%b, empty =%b, almost_f=%b almost_e=%b,rst=%b "
+	,data_in,data_out,f_flag,e_flag,a_flag,ae_flag,n_rst);
 	end
 
 	initial begin

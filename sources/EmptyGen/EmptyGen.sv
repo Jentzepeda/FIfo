@@ -21,6 +21,7 @@ input				n_rst,//input
 input	[SIZE-1:0]	w_gray_pointer,//input
 output	[SIZE-1:0]	r_count,//output to ram
 output	[SIZE-1:0]	r_gray,//this goes to other clock domain
+output				ae_flag,//output of almost empty flag
 output				e_flag//this goes to ram and other things?
 );
 
@@ -57,9 +58,15 @@ Sync #(.SIZE(SIZE)) w_syn
 //does the comparison
 Empty #(.SIZE(SIZE)) read_e 
 (
-.r_pointer(r_gray),
-.w_pointer(w_sync_pointer),
+.r_pointer(r_gray),//gray
+.w_pointer(w_sync_pointer),//gray
 .e_flag(e_flag)
 );
 
+AlmostEmptyGen #(.SIZE(SIZE)) almost_e
+(
+.w_gray_pointer(w_sync_pointer),//should be w_sync
+.r_bin_pointer(r_count),
+.ae_flag(ae_flag)
+);
 endmodule

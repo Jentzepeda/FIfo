@@ -25,6 +25,7 @@ input	[SIZE-1:0]	data_in,//data in from write clock
 output	[SIZE-1:0]	data_out,//output from Ram
 output				f_flag,//full flag output
 output				e_flag,//empty flag output
+output				almost_empty_flag,//almost empty flag output
 output				almost_full_flag//almost full flag
 );
 
@@ -53,6 +54,7 @@ EmptyGen #(.SIZE(DEPTH+1)) empty
 .w_gray_pointer(w_gray),
 .r_count(rd_adb),
 .r_gray(r_gray),
+.ae_flag(almost_empty_flag),
 .e_flag(e_flag)
 );
 
