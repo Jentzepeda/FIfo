@@ -22,19 +22,16 @@ output				a_flag
 );
 
 // reg
-reg a_flag;
+logic a_flag;
 	
 //always block
 always_comb 
 begin
+   a_flag =0;
 	if(w_pointer-r_pointer>9)
 	begin
-		a_flag<=1;
+		a_flag=1;
 	end 
-	else 
-	begin
-		a_flag<=0;
-	end
 end
 endmodule	
 	

@@ -12,19 +12,19 @@ module Sync
 SIZE=4
 )
 (
-input				clk,
-input	[SIZE-1:0]	d_in,
-output	[SIZE-1:0]	d_out
+input			  clk,
+input  [SIZE-1:0] d_in,
+output [SIZE-1:0] d_out
 );
 
-//reg
-reg [(SIZE-1):0] d_out;
-reg [(SIZE-1):0] temp;
+//logic
+logic [(SIZE-1):0] d_out;
+logic [(SIZE-1):0] temp;
 
 //always block
 always@(posedge clk ) 
 begin
-	temp	<= d_in;
-	d_out	<= temp;
+	temp  <= d_in;
+	d_out <= temp;
 end
 endmodule

@@ -14,19 +14,17 @@ module BinToGray
 SIZE=4
 )
 (
-input	[SIZE-1:0]	bin_in,
-output	[SIZE-1:0]	gray_out
+input	[SIZE-1:0]		   bin_in,
+output logic	[SIZE-1:0] gray_out
 );
-
-//reg
-reg [SIZE-1:0] gray_out;
 
 // combinationaly converts binary to gray code
 always_comb begin : proc_convert
+	gray_out =0;
 	for (int i = SIZE; i > 0; i--) 
 	begin
-		gray_out[i-1]=bin_in[i]^bin_in[i-1];
-		gray_out[SIZE-1]=bin_in[SIZE-1];
+		gray_out[i-1]    = bin_in[i]^bin_in[i-1];
+		gray_out[SIZE-1] = bin_in[SIZE-1];
 	end
 end
 endmodule

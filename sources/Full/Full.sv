@@ -36,14 +36,11 @@ end
 
 always_comb 
 begin
+	f_flag = 0;
 	if(mod_w_pointer[SIZE-1] !=	mod_r_pointer[SIZE-1] &&
 		 mod_w_pointer[SIZE-2:0] ==	mod_r_pointer[SIZE-2:0])
 		 begin	
-			f_flag	=1'b1;
+			f_flag = 1;
 		end 
-		else 
-		begin
-			f_flag	=1'b0;
-		end
 end
 endmodule	

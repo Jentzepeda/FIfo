@@ -21,10 +21,10 @@ output	[SIZE-1:0]	bin_out
 );
 
 //reg
-	reg [SIZE-1:0] bin_out;
-	reg [SIZE-1:0] temp;
+logic [SIZE-1:0] bin_out;
+logic [SIZE-1:0] temp;
 
-//this does gray to binary conversion
+//this does gray to binary conversion what ws this even doing lmao
 always_comb begin : proc_conver
 	bin_out[SIZE-1]=gray_in[SIZE-1];
 	temp[SIZE-1]=gray_in[SIZE-1];

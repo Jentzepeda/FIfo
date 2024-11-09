@@ -19,19 +19,16 @@ input	[SIZE-1:0]	w_pointer,
 output				e_flag
 );
 
-//reg 
-reg e_flag;
+//logic 
+logic e_flag;
 
 //always block
 always_comb 
 begin
+    e_flag = 0;
 	if(r_pointer==w_pointer)
 	begin
-		e_flag	=1'b1;
+		e_flag	= 1;
 	end 
-	else 
-	begin
-		e_flag	=1'b0;
-	end
 end
 endmodule
