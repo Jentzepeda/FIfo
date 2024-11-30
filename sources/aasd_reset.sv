@@ -3,37 +3,36 @@
 *** Ece 527L Experiment #4                        German Zepeda, Spring 2019***
 *** Experiment#4, FIFO							                            ***
 *******************************************************************************
-*** Filename: AASD.sv                                                       ***
+*** Filename: aasd_reset.sv                                                 ***
 ***                                                                         ***
 *******************************************************************************
 *** This modles the asynchronous assert, and synchronus de-assert function  ***
 *******************************************************************************
 */
 `timescale 1 ps / 1 ps
-module AASD
-(
-//input
-input	CLK,
-input	RST,
-//output
-output	AASDR
-);
-//reg
-	reg DFF1;
-	reg AASDR;
+module aasd_reset(
 
-// does the aasd
-always@(posedge CLK or negedge RST) 
+input        clock,
+input        reset_n,
+
+output logic aasd_reset
+
+);
+
+logic aasdr_flop;
+
+always@(posedge clock or negedge reset_n) 
 begin
-	if(!RST) 
+	if(!reset_n) 
 	begin
-		DFF1   <= 0;
-		AASDR  <= 0;
+		aasdr_flop <= 0;
+		aasd_reset <= 0;
 	end 
 	else 
 	begin
-		DFF1   <= 1;
-		AASDR  <= DFF1;
+		aasdr_flop <= 1;
+		aasd_reset <= aasdr_flop;
 	end
 end
+
 endmodule

@@ -7,24 +7,20 @@
 ** This describes a two stage synchronizer                                  ***
  *******************************************************************************
 */
-module Sync
-#(
-SIZE=4
-)
-(
-input			  clk,
-input  [SIZE-1:0] d_in,
-output [SIZE-1:0] d_out
+module sync #(SIZE=4)(
+    input			        clock,
+    input  [SIZE-1:0]       data_in,
+
+    output logic [SIZE-1:0] data_out
 );
 
 //logic
-logic [(SIZE-1):0] d_out;
-logic [(SIZE-1):0] temp;
+logic [(SIZE-1):0] data_temp;
 
 //always block
-always@(posedge clk ) 
-begin
-	temp  <= d_in;
-	d_out <= temp;
+always@(posedge clock ) begin
+	data_temp <= data_in;
+	data_out  <= data_temp;
 end
+
 endmodule

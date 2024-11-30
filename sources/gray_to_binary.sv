@@ -11,27 +11,25 @@
 
 `timescale 1ps/1ps
 
-module GrayToBin
-#(
-SIZE=4
-)
-(
-input	[SIZE-1:0]	gray_in,
-output	[SIZE-1:0]	bin_out	
+module gray_to_binary#( SIZE=4) (
+    input        [SIZE-1:0] gray_in,
+    output logic [SIZE-1:0] binary_out	
 );
 
-//reg
-logic [SIZE-1:0] bin_out;
-logic [SIZE-1:0] temp;
+logic [SIZE-1:0] binary_temp;
+assign binary_out = {gray_in[SIZE-1], binary_temp[SIZE-2:0]};
 
 //this does gray to binary conversion what ws this even doing lmao
 always_comb begin : proc_conver
-	bin_out[SIZE-1]=gray_in[SIZE-1];
-	temp[SIZE-1]=gray_in[SIZE-1];
-	for (int i = SIZE-2; i >= 0; i--)
+    binary_temp = 0;
+	for (int i = SIZE-1; i >= 0; i--)
 	 begin
-		temp[i]=temp[i+1]^gray_in[i];
+         if( i == SIZE-1) begin
+             binary_temp[i] = gray_in[i];
+         end
+         else begin
+             binary_temp[i] = binary_temp[i+1] ^ gray_in[i];
+         end
 	end
-	bin_out[SIZE-2:0]=temp[SIZE-2:0];
 end
 endmodule

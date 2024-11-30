@@ -5,28 +5,21 @@
 ************************************************************
 */
 `timescale 1ps/1ps
-module AlmostEmpty
-#(
-SIZE=4
-)
+module almost_empty #(
+    SIZE               = 4,
+    ALMOST_EMPTY_VALUE = 10)
 (
-//inputs
-input	[SIZE-1:0]	r_pointer,
-input	[SIZE-1:0]	w_pointer,
-//outputs
-output				ae_flag
-);
+    input [SIZE-1:0] read_pointer,
+    input [SIZE-1:0] write_pointer,
 
-// logic
-logic ae_flag;
+    output logic     almost_empty_flag
+);
 	
 //always block
-always_comb 
-begin
-	ae_flag =0;
-	if(w_pointer-r_pointer<10)//TODO fix this if statment to be a parameter
-	begin
-		ae_flag =1;
+always_comb begin
+	almost_empty_flag = 0;
+	if ( write_pointer-read_pointer < ALMOST_EMPTY_VALUE - 1 ) begin
+        almost_empty_flag = 1;
 	end 
 end
 endmodule	

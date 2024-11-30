@@ -8,39 +8,27 @@
 ********************************************************************************
 */
 `timescale 1ps/1ps
-module Full
-#(
-	SIZE=4
-)
-(
-input	[SIZE-1:0]	w_pointer,
-input	[SIZE-1:0]	r_pointer,
-output				f_flag
+module full #( SIZE=4 )(
+    input [SIZE-1:0] write_pointer,
+    input [SIZE-1:0] read_pointer,
+
+    output logic     full_flag
 );
 
 //reg
-reg f_flag;
-reg [SIZE-1:0] mod_r_pointer,mod_w_pointer;
+logic [SIZE-1:0] mod_read_pointer;
+logic [SIZE-1:0] mod_write_pointer;
 
 //always block
-always_comb 
-begin
-	mod_w_pointer	= {w_pointer[SIZE-1],
-		(w_pointer[SIZE-1]^w_pointer[SIZE-2]),
-			w_pointer[SIZE-3:0]};
-
-	mod_r_pointer	= {r_pointer[SIZE-1],
-			(r_pointer[SIZE-1]^r_pointer[SIZE-2]),
-				r_pointer[SIZE-3:0]};
+always_comb begin //TODO This looks like it should be a for loop of some kind ?
+    mod_write_pointer = {write_pointer[SIZE-1], (write_pointer[SIZE-1]^write_pointer[SIZE-2]),write_pointer[SIZE-3:0]};
+	mod_read_pointer  = {read_pointer[SIZE-1], (read_pointer[SIZE-1]^read_pointer[SIZE-2]),read_pointer[SIZE-3:0]};
 end
 
-always_comb 
-begin
-	f_flag = 0;
-	if(mod_w_pointer[SIZE-1] !=	mod_r_pointer[SIZE-1] &&
-		 mod_w_pointer[SIZE-2:0] ==	mod_r_pointer[SIZE-2:0])
-		 begin	
-			f_flag = 1;
-		end 
+always_comb begin 
+    full_flag = 0;
+    if (mod_write_pointer[SIZE-1] != mod_read_pointer[SIZE-1] && mod_write_pointer[SIZE-2:0] ==	mod_read_pointer[SIZE-2:0]) begin	
+        full_flag = 1;
+    end 
 end
 endmodule	

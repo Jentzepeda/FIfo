@@ -127,96 +127,96 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/sources/AASD/AASD.sv"] \
- [file normalize "${origin_dir}/sources/AlmostEmpty/AlmostEmpty.sv"] \
- [file normalize "${origin_dir}/sources/AlmostEmptyGen/AlmostEmptyGen.sv"] \
- [file normalize "${origin_dir}/sources/AlmostFull/AlmostFull.sv"] \
- [file normalize "${origin_dir}/sources/AlmostFullGen/AlmostFullGen.sv"] \
- [file normalize "${origin_dir}/sources/BinToGray/BinToGray.sv"] \
- [file normalize "${origin_dir}/sources/Counter/Counter.sv"] \
- [file normalize "${origin_dir}/sources/Empty/Empty.sv"] \
- [file normalize "${origin_dir}/sources/EmptyGen/EmptyGen.sv"] \
- [file normalize "${origin_dir}/sources/Full/Full.sv"] \
- [file normalize "${origin_dir}/sources/FullGen/FullGen.sv"] \
- [file normalize "${origin_dir}/sources/GrayToBin/GrayToBin.sv"] \
- [file normalize "${origin_dir}/sources/Ram/Ram.sv"] \
- [file normalize "${origin_dir}/sources/Sync/Sync.sv"] \
- [file normalize "${origin_dir}/sources/Fifo/Fifo.sv"] \
+ [file normalize "${origin_dir}/sources/aasd_reset.sv"] \
+ [file normalize "${origin_dir}/sources/almost_empty.sv"] \
+ [file normalize "${origin_dir}/sources/almost_empty_gen.sv"] \
+ [file normalize "${origin_dir}/sources/almost_full.sv"] \
+ [file normalize "${origin_dir}/sources/almost_full_gen.sv"] \
+ [file normalize "${origin_dir}/sources/binary_to_gray.sv"] \
+ [file normalize "${origin_dir}/sources/counter.sv"] \
+ [file normalize "${origin_dir}/sources/empty.sv"] \
+ [file normalize "${origin_dir}/sources/empty_gen.sv"] \
+ [file normalize "${origin_dir}/sources/full.sv"] \
+ [file normalize "${origin_dir}/sources/full_gen.sv"] \
+ [file normalize "${origin_dir}/sources/gray_to_binary.sv"] \
+ [file normalize "${origin_dir}/sources/ram.sv"] \
+ [file normalize "${origin_dir}/sources/sync.sv"] \
+ [file normalize "${origin_dir}/sources/fifo.sv"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/sources/AASD/AASD.sv"
+set file "$origin_dir/sources/aasd_reset.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/AlmostEmpty/AlmostEmpty.sv"
+set file "$origin_dir/sources/almost_empty.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/AlmostEmptyGen/AlmostEmptyGen.sv"
+set file "$origin_dir/sources/almost_empty_gen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/AlmostFull/AlmostFull.sv"
+set file "$origin_dir/sources/almost_full.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/AlmostFullGen/AlmostFullGen.sv"
+set file "$origin_dir/sources/almost_full_gen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/BinToGray/BinToGray.sv"
+set file "$origin_dir/sources/binary_to_gray.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Counter/Counter.sv"
+set file "$origin_dir/sources/counter.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Empty/Empty.sv"
+set file "$origin_dir/sources/empty.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/EmptyGen/EmptyGen.sv"
+set file "$origin_dir/sources/empty_gen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Full/Full.sv"
+set file "$origin_dir/sources/full.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/FullGen/FullGen.sv"
+set file "$origin_dir/sources/full_gen.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/GrayToBin/GrayToBin.sv"
+set file "$origin_dir/sources/gray_to_binary.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Ram/Ram.sv"
+set file "$origin_dir/sources/ram.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Sync/Sync.sv"
+set file "$origin_dir/sources/sync.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "$origin_dir/sources/Fifo/Fifo.sv"
+set file "$origin_dir/sources/fifo.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj

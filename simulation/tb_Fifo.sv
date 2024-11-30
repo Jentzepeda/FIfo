@@ -10,32 +10,31 @@ parameter DEPTH=4;
 parameter CLK1=4000;//write clock
 parameter CLK2=20000;//read clock
 
-reg w_clk,r_clk,n_rst;
-reg valid_write;
+logic            w_clk;
+logic            r_clk;
+logic            n_rst;
+logic            f_flag;
+logic            e_flag;
+logic            ae_flag;
+logic            a_flag;
+logic            valid_write;
+logic [SIZE-1:0] data_in;
+logic [SIZE-1:0] data_out;
 
-reg [SIZE-1:0] data_in;
 
-wire [SIZE-1:0] data_out;
-
-wire f_flag, e_flag;
-wire a_flag, ae_flag;
-
-Fifo 
-#(
-.SIZE(SIZE),
-.DEPTH(DEPTH))
- UUT
- (
-.w_clk(w_clk),
-.r_clk(r_clk),
-.n_rst(n_rst),
-.data_in(data_in),
-.data_out(data_out),
-.valid_write(valid_write),
-.f_flag(f_flag),
-.e_flag(e_flag),
-.almost_empty_flag(ae_flag),
-.almost_full_flag(a_flag)
+Fifo #(
+    .SIZE(SIZE),
+    .DEPTH(DEPTH))uut (
+    .w_clk             (w_clk),
+    .r_clk             (r_clk),
+    .n_rst             (n_rst),
+    .data_in           (data_in),
+    .data_out          (data_out),
+    .valid_write       (valid_write),
+    .f_flag            (f_flag),
+    .e_flag            (e_flag),
+    .almost_empty_flag (ae_flag),
+    .almost_full_flag  (a_flag)
 );
 
 

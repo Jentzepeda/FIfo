@@ -5,30 +5,22 @@
 *******************************************************************************
 *** Filename: Empty.sv                                                      ***
 ***                                                                         ***
-*** This file does the empty flag check/comparator   			    ***
+*** This file does the empty flag check/comparator   			            ***
 *******************************************************************************
 */
 `timescale 1 ps/1ps
-module Empty
-#(
-	SIZE=4
-)
-(
-input	[SIZE-1:0]	r_pointer,
-input	[SIZE-1:0]	w_pointer,
-output				e_flag
+module empty #( SIZE=4 )(
+    input [SIZE-1:0] read_pointer,
+    input [SIZE-1:0] write_pointer,
+
+    output logic     empty_flag
 );
 
-//logic 
-logic e_flag;
-
 //always block
-always_comb 
-begin
-    e_flag = 0;
-	if(r_pointer==w_pointer)
-	begin
-		e_flag	= 1;
+always_comb begin
+    empty_flag = 0;
+	if (read_pointer == write_pointer) begin
+        empty_flag = 1;
 	end 
 end
 endmodule

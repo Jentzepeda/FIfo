@@ -1,0 +1,1 @@
+- Fix binary to gray module

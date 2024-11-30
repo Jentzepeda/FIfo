@@ -2,36 +2,28 @@
 *** 527L Experiment #4                      German Zepeda, Spring 2019       ***
 *** Experiment #4, FIFO                                                      ***
 ********************************************************************************
-*** Filename: AlmostFull.sv    						     ***
+*** Filename: almost_full.sv    						                     ***
 ***                                                                          ***
-*** this file generats the almost full flag 				     ***
+*** this file generats the almost full flag 				                 ***
 ********************************************************************************
 */
 
 `timescale 1ps/1ps
-module AlmostFull
-#(
-SIZE=4
-)
+module almost_full #( 
+    SIZE              = 4,
+    ALMOST_FULL_VALUE = 9)
 (
-//inputs
-input	[SIZE-1:0]	w_pointer,
-input	[SIZE-1:0]	r_pointer,
-//outputs
-output				a_flag
-);
+    input [SIZE-1:0] write_pointer,
+    input [SIZE-1:0] read_pointer,
 
-// reg
-logic a_flag;
+    output logic     almost_full_flag
+);
 	
-//always block
-always_comb 
-begin
-   a_flag =0;
-	if(w_pointer-r_pointer>9)
-	begin
-		a_flag=1;
+always_comb begin
+    almost_full_flag = 0;
+    if ( write_pointer-read_pointer > ALMOST_FULL_VALUE ) begin
+        almost_full_flag = 1;
 	end 
 end
+
 endmodule	
-	
