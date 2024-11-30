@@ -22,17 +22,18 @@ logic [SIZE-1:0] data_in;
 logic [SIZE-1:0] data_out;
 
 
-Fifo #(
+fifo #(
     .SIZE(SIZE),
     .DEPTH(DEPTH))uut (
-    .w_clk             (w_clk),
-    .r_clk             (r_clk),
-    .n_rst             (n_rst),
+    .write_clock       (w_clk),
+    .read_clock        (r_clk),
+    .reset_n           (n_rst),
     .data_in           (data_in),
-    .data_out          (data_out),
     .valid_write       (valid_write),
-    .f_flag            (f_flag),
-    .e_flag            (e_flag),
+
+    .data_out          (data_out),
+    .full_flag         (f_flag),
+    .empty_flag        (e_flag),
     .almost_empty_flag (ae_flag),
     .almost_full_flag  (a_flag)
 );

@@ -35,7 +35,7 @@ counter #(.SIZE(SIZE)) counter_inst(
 );
 
 //this should convert gray read clock side
-binary_to_gray #(.SIZE(SIZE)) gray_inst (
+binary_to_gray #(.SIZE(SIZE)) binar_to_gray_inst (
     .binary_in (read_count),
 
     .gray_out  (read_gray)

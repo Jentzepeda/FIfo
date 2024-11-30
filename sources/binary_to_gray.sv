@@ -18,9 +18,9 @@ module binary_to_gray#( SIZE=4 )(
 // combinationaly converts binary to gray code
 always_comb begin : proc_convert
 	gray_out = 0;
-	for (int i = SIZE-1; i > 0; i--) 
+	for (int i = 0; i < SIZE-1; i++) 
 	begin
-		gray_out[i-1]    = binary_in[i]^binary_in[i-1];
+		gray_out[i] = binary_in[i]^binary_in[i+1];
 	end
 		gray_out[SIZE-1] = binary_in[SIZE-1];
 end

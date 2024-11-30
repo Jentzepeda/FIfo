@@ -12,8 +12,8 @@
 `timescale 1ps/1ps
 
 module fifo#(
-	SIZE=8,//length of the data 
-	DEPTH=4	)(
+	SIZE=32,//length of the data 
+	DEPTH=256	)(
     input			  write_clock,//write clock input
     input			  read_clock,//read clock input
     input			  reset_n,//rest

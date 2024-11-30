@@ -38,7 +38,7 @@ counter #(.SIZE(SIZE)) counter_inst (
 );
 
 //this should convert to gray write cloc side 
-binary_to_gray #(.SIZE(SIZE)) gray_inst (
+binary_to_gray #(.SIZE(SIZE)) binary_to_gray_inst (
     .binary_in (write_count),
 
     .gray_out  (write_gray)
