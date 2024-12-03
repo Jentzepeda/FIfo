@@ -8,7 +8,7 @@
 module almost_empty #(
     SIZE               = 4,
     ALMOST_EMPTY_VALUE = 10)
-(
+    (
     input [SIZE-1:0] read_pointer,
     input [SIZE-1:0] write_pointer,
 

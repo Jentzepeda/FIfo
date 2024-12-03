@@ -10,18 +10,16 @@
 `timescale 1ps/1ps
 module full #( SIZE=4 )(
     input [SIZE-1:0] write_pointer,
-    input [SIZE-1:0] read_pointer,
+    input [SIZE-1:0] read_pointer,//crossed clock domain
 
     output logic     full_flag
 );
 
-//reg
-logic [SIZE-1:0] mod_read_pointer;
-logic [SIZE-1:0] mod_write_pointer;
+logic [SIZE-1:0] mod_read_pointer;//modified gray
+logic [SIZE-1:0] mod_write_pointer;//modified gray
 
-//always block
-always_comb begin //TODO This looks like it should be a for loop of some kind ?
-    mod_write_pointer = {write_pointer[SIZE-1], (write_pointer[SIZE-1]^write_pointer[SIZE-2]),write_pointer[SIZE-3:0]};
+always_comb begin //TODO this really does seem wrong though
+    mod_write_pointer = {write_pointer[SIZE-1], (write_pointer[SIZE-1]^write_pointer[SIZE-2]),write_pointer[SIZE-3:0]};//should be modified
 	mod_read_pointer  = {read_pointer[SIZE-1], (read_pointer[SIZE-1]^read_pointer[SIZE-2]),read_pointer[SIZE-3:0]};
 end
 

@@ -16,7 +16,6 @@ input        clock,
 input        reset_n,
 
 output logic aasd_reset
-
 );
 
 logic aasdr_flop;

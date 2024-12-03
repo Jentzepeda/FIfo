@@ -6,7 +6,7 @@
 module tb_Fifo();
 
 parameter SIZE =8;
-parameter DEPTH=4;
+parameter DEPTH=2;
 parameter CLK1=4000;//write clock
 parameter CLK2=20000;//read clock
 
@@ -24,7 +24,7 @@ logic [SIZE-1:0] data_out;
 
 fifo #(
     .SIZE(SIZE),
-    .DEPTH(DEPTH))uut (
+    .DEPTH(DEPTH)) uut (
     .write_clock       (w_clk),
     .read_clock        (r_clk),
     .reset_n           (n_rst),
@@ -57,6 +57,7 @@ fifo #(
 	end
 
 	initial begin
+    //TODO write a better testbench
 	//$vcdpluson;
 	n_rst=1'b1;
 	valid_write =1'b0;
